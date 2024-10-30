@@ -15,7 +15,7 @@ function getMoviesFromDirector(array, director) {
 // Exercise 3: Calculate the average of the films of a given director.
 function moviesAverageOfDirector(array, director) {
   let moviesFromDirector = array.filter(movie => movie.director === director)
-  const result = moviesFromDirector.reduce((total, movie) => total + movie.score, 0)/moviesFromDirector.length;
+  const result = moviesFromDirector.reduce((total, movie) => total + movie.score, 0) / moviesFromDirector.length;
   console.log("EXERCICE 3 ->", result);
   return result;
 }
@@ -29,13 +29,20 @@ function orderAlphabetically(array) {
     return movies;
   } else {
     return movieTitle;
-  }  
+  }
 }
 
 // Exercise 5: Order by year, ascending
-function orderByYear() {
-
+function orderByYear(array) {
+  let result = [...array].sort((a, b) => {
+    if (a.year === b.year) {
+      return a.title.localeCompare(b.title);
+    }
+    return a.year - b.year;
+  });
+  return result;
 }
+
 
 // Exercise 6: Calculate the average of the movies in a category
 function moviesAverageByCategory() {
@@ -49,7 +56,7 @@ function hoursToMinutes() {
 
 // Exercise 8: Get the best film of a year
 function bestFilmOfYear() {
-  
+
 }
 
 
