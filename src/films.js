@@ -1,3 +1,5 @@
+const movies = require("./data");
+
 // Exercise 1: Get the array of all directors.
 function getAllDirectors(array) {
   let result = array.map(films => films.director);
@@ -45,8 +47,13 @@ function orderByYear(array) {
 
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {
+function moviesAverageByCategory(array, genre) {
+  let moviesFromGenre = array.filter(movie => movie.genre.includes(genre));
+  if (moviesFromGenre.length === 0) {return 0};
 
+  let averageMovies = moviesFromGenre.reduce((total, movie) => total + movie.score, 0)/moviesFromGenre.length;
+  console.log("EXERCICE 6 ->", averageMovies);
+  return parseFloat(averageMovies).toFixed(1);  
 }
 
 // Exercise 7: Modify the duration of movies to minutes
