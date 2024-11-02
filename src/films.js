@@ -28,8 +28,10 @@ function orderAlphabetically(array) {
 
   if (movieTitle.length > 20) {
     let movies = movieTitle.slice(0, 20);
+    console.log("EXERCICE 4 ->", movies);
     return movies;
   } else {
+    console.log("EXERCICE 4 ->", movieTitle);
     return movieTitle;
   }
 }
@@ -42,6 +44,7 @@ function orderByYear(array) {
     }
     return a.year - b.year;
   });
+  console.log("EXERCICE 5 ->", result);
   return result;
 }
 
@@ -54,6 +57,7 @@ function moviesAverageByCategory(array, genre) {
   let averageMovies = moviesFromGenre.reduce((total, movie) => total + movie.score, 0) / moviesFromGenre.length;
   console.log("EXERCICE 6 ->", averageMovies);
   let result = Number(averageMovies.toFixed(1));
+  console.log("EXERCICE 6 ->", result);
   return result;
 }
 
@@ -61,7 +65,7 @@ function moviesAverageByCategory(array, genre) {
 function hoursToMinutes(array) {
   //Had to create new array with objetcs like this because of Deep Copy.
   //This was the other option: let newMovies = JSON.parse(JSON.stringify(array));
-  
+
   let newMovies = [];
 
   for (i = 0; i < array.length; i++) {
@@ -103,16 +107,20 @@ function hoursToMinutes(array) {
     let durationInMinutes = horas * 60 + minutos;
     newMovies[i].duration = durationInMinutes;
   }
-
-  console.log("newMovies", typeof durationHours);
+  
+  console.log("EXERCICE 7 ->", newMovies);
   return newMovies;
 }
 
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {
-
+function bestFilmOfYear(array, year) {
+  let filmsOfYear = array.filter(movie => movie.year === year);
+  let filmScores = [...filmsOfYear].sort((a, b) => b.score - a.score);
+  let bestFilmArray = [];
+  bestFilmArray.push(filmScores[0]);
+  console.log("EXERCICE 8 ->", bestFilmArray);
+  return bestFilmArray;
 }
-
 
 
 // The following is required to make unit tests work.
