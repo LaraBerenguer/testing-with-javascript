@@ -291,43 +291,60 @@ describe('Function "orderByYear"', () => {
 });
 
 // Exercise 6
-// YOUR CODE HERE. Test moviesAverageByCategory()
 describe('Function "moviesAverageByCategory"', () => {
   it('should be declared', () => {
     expect(typeof moviesAverageByCategory).toBe('function');
   });
 
-  /*it('should return a number', () => {
-    let result = moviesAverageByCategory(array, `Drama`);
-    expect(typeof result).toBe(`number`);
+  it('should return a number', () => {
+    let films = [
+      {
+        title: 'Cidade de Deus',        
+        genre: ['Crime', 'Drama'],
+        score: 8.7
+      },
+      {
+        title: 'Se7en',        
+        genre: ['Crime', 'Drama', 'Mystery', 'Thriller'],
+        score: 8.6
+      }
+    ];
+    let result = moviesAverageByCategory(films, `Drama`);
+    expect(typeof result).toBe('number');
   });
 
   it('should return 0 if there is no movies for the genre', () => {
-    let result = moviesAverageByCategory(array, `MadeUpGenre`);
-    expect(result).toBe(0);
-  });*/
-
-  it('should calculate average for a given genre', () => {
-    let movies = [
+    let films = [
       {
-        title: 'Cidade de Deus',
-        year: 2002,
-        director: 'Fernando Meirelles',
-        duration: '2h 10min',
+        title: 'Cidade de Deus',        
         genre: ['Crime', 'Drama'],
         score: 8.7
       },
       {
         title: 'Se7en',
-        year: 1995,
-        director: 'David Fincher',
-        duration: '2h 7min',
         genre: ['Crime', 'Drama', 'Mystery', 'Thriller'],
         score: 8.6
       }
     ];
-    let result = moviesAverageByCategory(movies, `Drama`);
-    expect(result).toBe(result);
+    let result = moviesAverageByCategory(films, `MadeUpGenre`);
+    expect(result).toBe(0);
+  });
+
+  it('should calculate average for a given genre', () => {
+    let films = [
+      {
+        title: 'Cidade de Deus',        
+        genre: ['Crime', 'Drama'],
+        score: 8.7
+      },
+      {
+        title: 'Se7en',
+        genre: ['Crime', 'Drama', 'Mystery', 'Thriller'],
+        score: 8.6
+      }
+    ];
+    let result = moviesAverageByCategory(films, `Drama`);
+    expect(result).toBe(8.6);
   });
 });
 
